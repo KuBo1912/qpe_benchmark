@@ -2,7 +2,7 @@ import numpy as np
 from qiskit import QuantumCircuit
 
 def build_qft(n_qubits : int) -> QuantumCircuit:
-    qc = QuantumCircuit(n_qubits)
+    qc = QuantumCircuit(n_qubits, name="QFT")
     
     for i in range(n_qubits):
         qc.h(i)
@@ -15,7 +15,7 @@ def build_qft(n_qubits : int) -> QuantumCircuit:
     return qc
 
 def build_inverse_qft(n_qubits : int ) -> QuantumCircuit:
-    qc = QuantumCircuit(n_qubits)
+    qc = QuantumCircuit(n_qubits, name="Inverse_QFT")
     
     for i in range(n_qubits // 2):
         qc.swap(i, n_qubits - 1 - i)
