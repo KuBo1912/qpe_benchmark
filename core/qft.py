@@ -17,12 +17,14 @@ def build_qft(n_qubits : int) -> QuantumCircuit:
 def build_inverse_qft(n_qubits : int ) -> QuantumCircuit:
     qc = QuantumCircuit(n_qubits, name="Inverse_QFT")
     
-    for i in range(n_qubits // 2):
-        qc.swap(i, n_qubits - 1 - i)
     
     for i in range(n_qubits - 1, -1, - 1):
         for j in range(n_qubits - 1, i, - 1):
             qc.cp(-(2 * np.pi) / (2 ** (j - i + 1)), j, i)
             
         qc.h(i)
+        
+    for i in range(n_qubits // 2):
+        qc.swap(i, n_qubits - 1 - i)
+        
     return qc

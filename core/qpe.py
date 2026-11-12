@@ -1,13 +1,13 @@
 import numpy as np
-from qft import build_inverse_qft
+from core.qft import build_inverse_qft
 from qiskit import QuantumCircuit, QuantumRegister
 from qiskit.circuit import Gate
 
 def build_qpe(t_qubits : int, unitary_gate : Gate, state_prep_circ : QuantumCircuit | None = None) -> QuantumCircuit:
-    qr = QuantumRegister(t_qubits, name="counting")
+    qr = QuantumRegister(t_qubits, name="counting") # q_0 -> q_t-1
     
     num_target = unitary_gate.num_qubits
-    qtarget = QuantumRegister(num_target, name="target")
+    qtarget = QuantumRegister(num_target, name="target") #bit target ở vị trí đầu bên trái q_t
     
     qc = QuantumCircuit(qr, qtarget, name="QPE")
     

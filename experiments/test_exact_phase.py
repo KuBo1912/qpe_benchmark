@@ -1,2 +1,0 @@
-from qiskit.quantum_info import Statevector
-from qiskit_aer import AerSimulator
