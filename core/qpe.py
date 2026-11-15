@@ -21,7 +21,7 @@ def build_qpe(t_qubits : int, unitary_gate : Gate, state_prep_circ : QuantumCirc
     curr_unitary_gate = unitary_gate
     for i in range(t_qubits):
         ctrl_gate = curr_unitary_gate.control()
-        qc.append(ctrl_gate, [qr[i], qtarget[0]])
+        qc.append(ctrl_gate, [qr[i], *qtarget])
         
         curr_unitary_gate = curr_unitary_gate.power(2)
     
